@@ -53,4 +53,5 @@ jobs:
           tag: latest
           allowUpdates: true
           replacesArtifacts: true
+          repo: navalekar-sahil/mvvm_ProjectStructure
           token: ${{ secrets.TOKEN }}
