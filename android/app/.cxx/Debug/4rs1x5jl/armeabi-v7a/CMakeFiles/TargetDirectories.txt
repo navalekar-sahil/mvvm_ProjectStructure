@@ -1,0 +1,2 @@
+E:/sahil-navalekar/mvvm_projectStructure/android/app/.cxx/Debug/4rs1x5jl/armeabi-v7a/CMakeFiles/edit_cache.dir
+E:/sahil-navalekar/mvvm_projectStructure/android/app/.cxx/Debug/4rs1x5jl/armeabi-v7a/CMakeFiles/rebuild_cache.dir
