@@ -29,29 +29,19 @@ jobs:
           channel: 'stable'
           architecture: x64
 
-      # 👉 Build APK
-      - run: flutter build apk --release --split-per-abi
+      - name: Build APK
+        run: flutter build apk --release --split-per-abi
 
-      # 👉 Rename APK to your custom name
-      - run: mv build/app/outputs/apk/release/app-arm64-v8a-release.apk build/app/outputs/apk/release/mvvm_structure.apk
+      - name: Rename APK
+        run: |
+          # Rename the APK you want (usually arm64-v8a)
+          mv build/app/outputs/apk/release/app-arm64-v8a-release.apk build/app/outputs/apk/release/mvvm_structure.apk
 
-      # 👉 Build iOS (optional, if needed)
-      - run: |
-          flutter build ios --no-codesign
-          cd build/ios/iphoneos
-          mkdir Payload
-          cd Payload
-          ln -s ../Runner.app
-          cd ..
-          zip -r app.ipa Payload
-
-      # 👉 Push APK and IPA to GitHub Releases
-      - name: Push to Releases
+      - name: Push APK to GitHub Release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "build/app/outputs/apk/release/mvvm_structure.apk,build/ios/iphoneos/app.ipa"
+          artifacts: "build/app/outputs/apk/release/mvvm_structure.apk"
           tag: latest
           allowUpdates: true
           replacesArtifacts: true
-          repo: navalekar-sahil/mvvm_ProjectStructure
           token: ${{ secrets.TOKEN }}
